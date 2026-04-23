@@ -1,0 +1,54 @@
+{
+  "name": "@tq-systems/em-ui-core",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Core UI build toolchain and app initialization for TQ Energy Manager",
+  "keywords": [
+    "vue",
+    "vite",
+    "energy-manager",
+    "tq-systems",
+    "ui-framework"
+  ],
+  "author": "TQ-Systems GmbH",
+  "homepage": "https://www.tq-group.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tq-systems/em-frontend-ui-core"
+  },
+  "main": "./core/main.base.js",
+  "exports": {
+    ".": "./core/main.base.js",
+    "./main.base.js": "./core/main.base.js",
+    "./store": "./shared/store.js",
+    "./config/vite.buildProd": "./config/vite.buildProd.js",
+    "./config/vite.dev": "./config/vite.dev.js"
+  },
+  "files": [
+    "core",
+    "shared/*.js",
+    "!shared/*.spec.js",
+    "config",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "echo This package provides source code only.",
+    "test:unit": "vitest"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.13",
+    "vue-i18n": "^11.1.12",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "jsdom": "^29.0.2",
+    "vitest": "^4.1.2"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "copyright": "TQ-Systems GmbH 2026",
+  "license": "LicenseRef-TQSPSLA-1.0.3",
+  "packageManager": "yarn@4.6.0"
+}
