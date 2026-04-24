@@ -1,6 +1,6 @@
 {
   "name": "@tq-systems/em-ui-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Core UI build toolchain and app initialization for TQ Energy Manager",
   "keywords": [
