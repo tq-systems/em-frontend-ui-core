@@ -1,0 +1,27 @@
+---
+include:
+- project: tq-em/public/build/toolchain
+  file: ci/packages.yml
+  ref: v1.2.0
+  rules:
+    - if: '$PUBLIC_TOOLCHAIN_CI_REF'
+      when: never
+    - when: always
+- project: tq-em/public/build/toolchain
+  file: ci/packages.yml
+  ref: $PUBLIC_TOOLCHAIN_CI_REF
+  rules:
+    - if: '$PUBLIC_TOOLCHAIN_CI_REF'
+
+
+Build Package:
+  extends: .build-package
+
+Secret Detection:
+  extends: .gitleaks
+
+Check Version:
+  extends: .check-version
+
+Deploy Package:
+  extends: .deploy-package
