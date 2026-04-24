@@ -1,1 +1,3 @@
 ## [{{ version }}]
+### Fixed
+- Add deployment config in package.json

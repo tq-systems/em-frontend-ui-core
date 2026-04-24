@@ -16,6 +16,9 @@
     "type": "git",
     "url": "https://github.com/tq-systems/em-frontend-ui-core"
   },
+  "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+  },
   "main": "./core/main.base.js",
   "exports": {
     ".": "./core/main.base.js",
