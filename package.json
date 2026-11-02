@@ -1,6 +1,6 @@
 {
   "name": "@tq-systems/em-ui-core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "Core UI build toolchain and app initialization for TQ Energy Manager",
   "keywords": [
@@ -17,7 +17,7 @@
     "url": "https://github.com/tq-systems/em-frontend-ui-core"
   },
   "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "main": "./core/main.base.js",
   "exports": {
@@ -40,18 +40,18 @@
     "test:unit": "vitest"
   },
   "peerDependencies": {
-    "vue": "^3.5.13",
-    "vue-i18n": "^11.1.12",
-    "vue-router": "^4.5.0"
+    "vue": "^3.5.44",
+    "vue-i18n": "^11.4.16",
+    "vue-router": "^4.6.3"
   },
   "devDependencies": {
-    "jsdom": "^29.0.2",
-    "vitest": "^4.1.2"
+    "jsdom": "^29.1.1",
+    "vitest": "^4.1.11"
   },
   "engines": {
     "node": ">=22.0.0"
   },
   "copyright": "TQ-Systems GmbH 2026",
   "license": "LicenseRef-TQSPSLA-1.0.3",
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.18.1"
 }
