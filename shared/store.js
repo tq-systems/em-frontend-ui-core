@@ -28,6 +28,7 @@ export function createStore() {
         statusMessage: '',
         warningMessage: '',
         dangerHeaderMessage: '',
+        dangerHeaders: {},
         hideAlert: null,
         forceRedirect: true,
         timezone: localStorage.getItem('timezone') || null,
@@ -256,6 +257,22 @@ export function createStore() {
             },
             setDangerHeader(state, dangerHeaderMessage) {
                 state.dangerHeaderMessage = dangerHeaderMessage
+                if (dangerHeaderMessage) {
+                    state.dangerHeaders.legacy = dangerHeaderMessage
+                } else {
+                    delete state.dangerHeaders.legacy
+                }
+            },
+            // Keyed variant so multiple independent danger headers can coexist without overwriting each other.
+            setDangerHeaderById(state, { id, message }) {
+                if (!id) {
+                    return
+                }
+                if (message) {
+                    state.dangerHeaders[id] = message
+                } else {
+                    delete state.dangerHeaders[id]
+                }
             },
         },
 
@@ -269,11 +286,11 @@ export function createStore() {
         // init method to initialize the store with options
         init(options) {
             if (options && typeof options === 'object') {
-                for (let key in options) {
-                    if (options.hasOwnProperty(key) && store.state.hasOwnProperty(key)) {
-                        store.state[key] = options[key]
-                    }
+            for (let key in options) {
+                if (options.hasOwnProperty(key) && store.state.hasOwnProperty(key)) {
+                    store.state[key] = options[key]
                 }
+            }
             }
             store.emit('init', store.state)
         },

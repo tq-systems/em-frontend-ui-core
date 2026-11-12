@@ -1,1 +1,3 @@
 ## [{{ version }}]
+### Added
+- danger header messages can now be set per explicit ID, so messages from different apps no longer overwrite each other

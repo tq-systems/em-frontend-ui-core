@@ -132,6 +132,53 @@ describe('Store', () => {
         })
     })
 
+    // ── Danger Headers ───────────────────────────────────────────
+
+    describe('Danger Headers', () => {
+        it('setDangerHeader (legacy) mirrors into dangerHeaders.legacy', () => {
+            store.commit('setDangerHeader', 'legacy.message')
+            expect(store.state.dangerHeaderMessage).toBe('legacy.message')
+            expect(store.state.dangerHeaders.legacy).toBe('legacy.message')
+        })
+
+        it('setDangerHeader with an empty message clears dangerHeaders.legacy', () => {
+            store.commit('setDangerHeader', 'legacy.message')
+            store.commit('setDangerHeader', '')
+            expect(store.state.dangerHeaderMessage).toBe('')
+            expect(store.state.dangerHeaders).not.toHaveProperty('legacy')
+        })
+
+        it('setDangerHeaderById sets a message under its own id', () => {
+            store.commit('setDangerHeaderById', { id: 'grid-connection', message: 'gc.error' })
+            expect(store.state.dangerHeaders['grid-connection']).toBe('gc.error')
+        })
+
+        it('setDangerHeaderById with an empty message removes the entry', () => {
+            store.commit('setDangerHeaderById', { id: 'grid-connection', message: 'gc.error' })
+            store.commit('setDangerHeaderById', { id: 'grid-connection', message: '' })
+            expect(store.state.dangerHeaders).not.toHaveProperty('grid-connection')
+        })
+
+        it('legacy and keyed callers coexist without overwriting each other', () => {
+            store.commit('setDangerHeader', 'legacy.message')
+            store.commit('setDangerHeaderById', { id: 'grid-connection', message: 'gc.error' })
+            expect(store.state.dangerHeaders).toEqual({
+                legacy: 'legacy.message',
+                'grid-connection': 'gc.error',
+            })
+
+            store.commit('setDangerHeaderById', { id: 'grid-connection', message: '' })
+            expect(store.state.dangerHeaders).toEqual({ legacy: 'legacy.message' })
+        })
+
+        it('commit emits setDangerHeaderById:done with the payload', () => {
+            const cb = vi.fn()
+            store.on('setDangerHeaderById:done', cb)
+            store.commit('setDangerHeaderById', { id: 'x', message: 'y' })
+            expect(cb).toHaveBeenCalledWith({ id: 'x', message: 'y' })
+        })
+    })
+
     // ── Dispatch / Actions ───────────────────────────────────────
 
     describe('Dispatch', () => {
