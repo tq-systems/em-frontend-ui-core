@@ -1,1 +1,4 @@
 ## [{{ version }}]
+### Changed
+- frontend: remove the ineffective output option from the SBOM plugin, it writes to its default
+  path cyclonedx/bom.json below the build output directory

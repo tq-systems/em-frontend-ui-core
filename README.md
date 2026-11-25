@@ -97,7 +97,8 @@ VITE_BRANDING=default VITE_TARGET=http://10.0.0.1 yarn exec vite --config node_m
 Production builds output to `frontend/dist/{branding}/` and include:
 - Bundled JavaScript and CSS assets
 - Third-party license notices
-- SBOM (Software Bill of Materials) in CycloneDX format
+- SBOM (Software Bill of Materials) in CycloneDX format, written by `rollup-plugin-sbom`
+  to its default path `cyclonedx/bom.json` below the build output directory
 
 ## Project Structure Requirements
 When using this package, your project should have the following structure:

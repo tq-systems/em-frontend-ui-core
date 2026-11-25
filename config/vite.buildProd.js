@@ -36,7 +36,6 @@ export default defineConfig(({ mode }) => {
 
   const brandingRoot = resolve(frontendRoot, `brandings/${branding}`)
   const licenseFile = resolve(frontendRoot, `dist/${branding}/ThirdPartyNotice.txt`)
-  const sbomFile = resolve(frontendRoot, `dist/${branding}/cyclonedx/bom.json`)
 
   return {
     root: brandingRoot,
@@ -96,10 +95,11 @@ export default defineConfig(({ mode }) => {
               allow: '(MIT OR Apache-2.0 OR BSD-2-Clause OR BSD-3-Clause)'
             }
           }),
+          // The plugin writes to its default path <outDir>/cyclonedx/bom.json,
+          // which is where the toolchain picks the SBOM up.
           sbom({
             autodetect: false,
             outFormats: ['json'],
-            output: sbomFile,
           }),
         ]
       },
