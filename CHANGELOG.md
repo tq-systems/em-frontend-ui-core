@@ -1,3 +1,8 @@
+## [1.1.1] - 2026-11-25
+### Changed
+- frontend: remove the ineffective output option from the SBOM plugin, it writes to its default
+  path cyclonedx/bom.json below the build output directory
+
 ## [1.1.0] - 2026-11-12
 ### Added
 - danger header messages can now be set per explicit ID, so messages from different apps no longer overwrite each other
